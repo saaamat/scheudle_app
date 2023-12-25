@@ -23,16 +23,18 @@ suspend fun GetClient(): HttpClient {
     }
     return client
 }
-suspend fun PostName(client : HttpClient) {
-    val name: List<Names> = client.get("http://192.168.50.171:8000/names/")
-    println(name[0].name)
-    val response: HttpResponse = client.post("http://192.168.50.171:8000/names/") {
-        contentType(ContentType.Application.Json)
-        body = Names(id = null, name = "Опять тест")
-    }
-    println(response.status)
-}
 
+suspend fun GetAllNames(): List<Names> {
+    val client = HttpClient(CIO)
+    {
+        install(JsonFeature)
+        {
+            serializer = KotlinxSerializer()
+        }
+    }
+    val names: List<Names> = client.get("https://4ccf-90-151-85-183.ngrok-free.app/names")
+    return names
+}
 suspend fun main () {
-    PostName(GetClient())
+    GetAllNames()
 }
