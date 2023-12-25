@@ -28,6 +28,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".WeatherActivity"
+            android:exported="true"
+            android:theme="@style/Theme.DashBoard">
+        </activity>
+
+        <activity
             android:name=".SecondActivity"
             android:exported="true"
             android:theme="@style/Theme.DashBoard">

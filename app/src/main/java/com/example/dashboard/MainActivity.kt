@@ -59,21 +59,15 @@ import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.LocationOn
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             ProfileScreen(
                 onGoBack = { }
-
-
             )
-
             LocalContext.current.startActivity(Intent(LocalContext.current, LoginActivity::class.java))
         }
     }
@@ -310,7 +304,10 @@ fun MainProfileContent() {
         Column(modifier = Modifier.padding(5.dp)) {
             Text(
                 modifier = Modifier
-                    .padding(10.dp),
+                    .padding(10.dp)
+                    .clickable {
+                        context.startActivity(Intent(context, WeatherActivity::class.java))
+                    },
                 text = "Погода",
                 style = MaterialTheme.typography.titleMedium,
             )
@@ -347,6 +344,7 @@ fun MainProfileContent() {
         }
     }
 }
+
 
 @Composable
 fun PopularContentList() {
