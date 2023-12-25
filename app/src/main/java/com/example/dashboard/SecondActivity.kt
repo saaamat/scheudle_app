@@ -30,19 +30,14 @@ class SecondActivity : ComponentActivity() {
 
     @Composable
     fun SecondScreen() {
-        var names by remember { mutableStateOf<List<Names>>(emptyList()) }
-
+        var names by remember { mutableStateOf<String>("") }
         LaunchedEffect(Unit) {
-
-            // Выполняем корутину и обновляем состояние
             val result = withContext(Dispatchers.Default) {
                 GetAllNames()
             }
-
             names = result
         }
-
-        // Отображаем текст из корутины
-        Text(text = names.joinToString { it.name })
+        Text(text = names)
     }
+
 }

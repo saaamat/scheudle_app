@@ -24,7 +24,7 @@ suspend fun GetClient(): HttpClient {
     return client
 }
 
-suspend fun GetAllNames(): List<Names> {
+suspend fun GetAllNames(): String {
     val client = HttpClient(CIO)
     {
         install(JsonFeature)
@@ -32,9 +32,7 @@ suspend fun GetAllNames(): List<Names> {
             serializer = KotlinxSerializer()
         }
     }
-    val names: List<Names> = client.get("https://4ccf-90-151-85-183.ngrok-free.app/names")
+    val names = client.get<String>("http://46.29.236.247:8000/names")
     return names
 }
-suspend fun main () {
-    GetAllNames()
-}
+
