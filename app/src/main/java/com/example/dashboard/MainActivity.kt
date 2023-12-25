@@ -61,14 +61,20 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
             ProfileScreen(
                 onGoBack = { }
+
+
             )
+
+            LocalContext.current.startActivity(Intent(LocalContext.current, LoginActivity::class.java))
         }
     }
 }
@@ -313,12 +319,9 @@ fun MainProfileContent() {
             Divider(modifier = Modifier.padding(vertical = 15.dp))
 
             GitContentItem(
-                modifier = Modifier.clickable(){
-                        val intent = Intent(context, SecondActivity::class.java)
-                        context.startActivity(intent)
-                    }
-
-                    .padding(vertical = 2.dp),
+                modifier = Modifier.padding(vertical = 2.dp).clickable(onClick = {
+                    context.startActivity(Intent(context, SecondActivity::class.java))
+                }),
                 icon = {
                     Icon(
                         imageVector = DCodeIcon.ImageVectorIcon(MyIcons.List).imageVector,

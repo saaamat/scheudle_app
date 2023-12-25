@@ -25,7 +25,7 @@ suspend fun main() {
 }
 
 @Serializable
-data class Descriptions (val id: Int?, val description: String, val index: Int)
+data class Descriptions (val id: Int?, val name: Int, val description: String, val index: Int)
 
 @Serializable
 data class Events (val id: Int, val start_time: String, val end_time: String, val subject_name: String, val location: String, val instructors: String, val event_type: String, val subject_name_short: String)

@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">DashBoard</string>
+    <string name="app_name">ScheduleApp</string>
     <string name="txt_profile">Profile for Schedules and more</string>
     <string name="txt_more_options">More options for this application</string>
     <string name="prof">Профиль</string>
     <string name="fio">Иванов Иван ИваноВИЧ</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
